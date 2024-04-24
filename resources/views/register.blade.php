@@ -9,22 +9,24 @@
 </head>
 <body>
     <h1>User Registration</h1>
-    @if ($errors->any())
-        <div>
+   
+    <form action="{{ route('register.post') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @if ($errors->any())
+        <div class="error">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
-    @endif
-    <form action="{{ route('register.post') }}" method="POST" enctype="multipart/form-data">
-        @csrf
+       @endif
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br><br>
+       
 
         <label for="mobile">Mobile:</label>
         <input type="text" id="mobile" name="mobile" required><br><br>
